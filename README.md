@@ -6,9 +6,9 @@ A small framework for playing armor stand animations generated from Blender
 # Example usage
 ```java
 
+    // animations are immutable, hence are thread-safe, so we can store them long term.
     private static final ArmorStandAnimation ANIMATION = AnimationFileParser
                .parse(new File(("somewhere/animation.mcfunction")));
-    // animations are immutable, hence are thread-safe, so we can store them long term.
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
