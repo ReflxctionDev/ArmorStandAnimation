@@ -15,11 +15,10 @@ repositories {
     mavenLocal()
     maven { url 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/' }
     maven { url 'https://oss.sonatype.org/content/groups/public/' }
-    maven { url 'https://jitpack.io/' }
 }
 
 dependencies {
-    compileOnly group: 'org.spigotmc', name: 'spigot-api', version: '1.16.4-R0.1-SNAPSHOT'
+    compileOnly group: 'org.spigotmc', name: 'spigot', version: '1.16.4-R0.1-SNAPSHOT'
     compileOnly group: 'org.jetbrains', name: 'annotations', version: '16.0.1'
     compileOnly 'org.projectlombok:lombok:1.18.16'
     annotationProcessor 'org.projectlombok:lombok:1.18.16'
