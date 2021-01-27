@@ -24,6 +24,7 @@ public class AnimationFrame {
     private final EulerAngle rightArm;
     private final EulerAngle leftLeg;
     private final EulerAngle rightLeg;
+    transient Movement3D movement;
 
     public void pose(@NotNull ArmorStand stand) {
         stand.setBodyPose(body);
@@ -32,6 +33,7 @@ public class AnimationFrame {
         stand.setRightArmPose(rightArm);
         stand.setLeftLegPose(leftLeg);
         stand.setRightLegPose(rightLeg);
+        if (movement != null) stand.teleport(movement.add(stand.getLocation()));
     }
 
     @Override public String toString() {
@@ -43,6 +45,11 @@ public class AnimationFrame {
                 ", leftLeg=" + string(leftLeg) +
                 ", rightLeg=" + string(rightLeg) +
                 '}';
+    }
+
+    public void setMovement(Movement3D movement) {
+        if (this.movement == null)
+            this.movement = movement;
     }
 
     private static String string(EulerAngle angle) {
