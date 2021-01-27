@@ -5,21 +5,24 @@ A small framework for playing armor stand animations generated from Blender
 
 # Example usage
 ```java
-    private static final ArmorStandAnimation ANIMATION = AnimationFileParser.parse(new File(("somewhere/animation.mcfunction")));
-    // animations are immutable, hence are thread-safe, so we can store them long term.
 
-    @EventHandler(ignoreCancelled = true)
+    // animations are immutable, hence are thread-safe, so we can store them long term.
+    private static final ArmorStandAnimation ANIMATION = AnimationFileParser
+               .parse(new File(("somewhere/animation.mcfunction")));
+
+    @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         ArmorStand armorStand = event.getPlayer().getWorld().spawn(event.getPlayer().getLocation(), ArmorStand.class);
         armorStand.setBasePlate(false);
         armorStand.setArms(true);
 
-        AnimationController controller = ANIMATION.play(this, armorStand);
+        AnimationController controller = ANIMATION.play(plugin, armorStand);
         // or
-        AnimationController controller = ANIMATION.playAsync(this, armorStand);
+        AnimationController controller = ANIMATION.playAsync(plugin, armorStand);
         
         controller.pause();
         controller.resume();
         ...
     }
+    
 ```
